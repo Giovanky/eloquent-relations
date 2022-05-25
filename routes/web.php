@@ -15,3 +15,10 @@ Route::get('/', function () {
     $user = App\User::get();
     return view('welcome', ['users' => $user]);
 });
+
+Route::get('/profile/{id}', function($id) {
+    $user = App\User::find($id);
+    return view('profile', [
+        'user' => $user
+    ]);
+})->name('profile');

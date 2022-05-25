@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             $profile = $user->profile()->save(factory(App\Profile::class)->make());
             $profile->location()->save(factory(App\Location::class)->make());
             $user->groups()->attach($this->array(rand(1, 3)));
-            $user->image()->save(factory(App\Image::class)->make(['url' => 'https://lorempixel.com/90/90/']));
+            $user->image()->save(factory(App\Image::class)->make(['url' => 'https://picsum.photos/90/90/']));
         });
 
         factory(App\Category::class, 4)->create();
@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
             }
         });
 
-        factory(App\Post::class, 40)->create()->each(function($video) {
+        factory(App\Video::class, 40)->create()->each(function($video) {
             $video->image()->save(factory(App\Image::class)->make());
             $video->tags()->attach($this->array(rand(1, 12)));
             $number_comments = rand(1, 6);
